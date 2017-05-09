@@ -22,6 +22,21 @@ export default function todos(state = initState, action) {
                 },
                 ...state
             ];
+        case types.EDIT_TODO:
+            return state.map(todo =>
+                todo.id === action.id ?
+                    {...todo, text: action.text} : todo
+            );
+        case types.COMPLETE_TODO:
+            return state.map(todo =>
+                todo.id === action.id ?
+                    {...todo, completed: !todo.completed} : todo
+            );
+        case types.COMPLETE_ALL:
+            const areAllMarket = state.every(todo => todo.completed);
+            return state.map(todo => ({
+                ...todo, completed: !areAllMarket
+            }));
         default:
             return state;
     }

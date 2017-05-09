@@ -48,7 +48,7 @@ export default class TodoTextInput extends Component {
                    type="text"
                    placeholder={this.props.placeholder}
                    autoFocus="true"
-                   value={this.props.text}
+                   value={this.state.text}
                    onBlur={this.handleBlur}
                    onChange={this.handleChange}
                    onKeyDown={this.handleSubmit} />
