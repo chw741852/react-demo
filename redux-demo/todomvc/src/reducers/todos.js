@@ -37,6 +37,14 @@ export default function todos(state = initState, action) {
             return state.map(todo => ({
                 ...todo, completed: !areAllMarket
             }));
+        case types.DELETE_TODO:
+            return state.filter(todo =>
+                todo.id !== action.id
+            );
+        case types.CLEAR_COMPLETED:
+            return state.filter(todo =>
+                todo.completed === false
+            );
         default:
             return state;
     }
